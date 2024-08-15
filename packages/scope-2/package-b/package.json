@@ -1,0 +1,32 @@
+{
+    "name": "@scope-2/package-b",
+    "version": "1.0.0",
+    "description": "",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "module": "lib/index.esm.js",
+    "scripts": {
+        "test": "yarn g:test",
+        "compile": "yarn g:compile",
+        "build": "yarn g:build",
+        "clean": "yarn g:clean",
+        "prepare": "yarn run build"
+    },
+    "files": [
+        "lib/**/*"
+    ],
+    "author": "JSON",
+    "license": "ISC",
+    "jestSonar": {
+        "reportPath": "coverage",
+        "reportFile": "test-reporter.xml"
+    },
+    "devDependencies": {
+        "@scope-1/package-a": "^1.0.0",
+        "react": "^17.0.2"
+    },
+    "peerDependencies": {
+        "@scope-1/package-a": "^1.0.0",
+        "react": "^17.0.2"
+    }
+}

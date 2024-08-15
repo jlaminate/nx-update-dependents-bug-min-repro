@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/**"
+  ],
+  "name": "nx-bug-reproduction",
+  "scripts": {
+    "clean": "yarn nx run-many --target=clean",
+    "compile": "yarn nx run-many --target=compile",
+    "build": "yarn nx run-many --target=build",
+    "g:compile": "cd $INIT_CWD && rollup -c",
+    "g:build": "cd $INIT_CWD && yarn clean && yarn compile",
+    "g:test": "cd $INIT_CWD && jest --coverage",
+    "g:clean": "cd $INIT_CWD && rimraf lib documentation coverage"
+  },
+  "devDependencies": {
+    "@nx/js": "19.5.1",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "nx": "19.5.1",
+    "react": "^17.0.2",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.9.1",
+    "typescript": "^5.2.2"
+  },
+  "packageManager": "yarn@4.3.1+sha256.2535167e742927e1d2a1610d5004576e4e8f764d2ca5470d19536790f55cd6e2"
+}

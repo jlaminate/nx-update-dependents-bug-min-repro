@@ -1,0 +1,62 @@
+{
+  "extends": "nx/presets/npm.json",
+  "release": {
+    "projects": [
+      "*"
+    ],
+    "projectsRelationship": "independent",
+    "releaseTagPattern": "{projectName}-v{version}",
+    "changelog": {
+      "automaticFromRef": true,
+      "projectChangelogs": {
+        "renderOptions": {
+          "authors": false,
+          "commitReferences": true,
+          "versionTitleDate": true
+        }
+      }
+    },
+    "version": {
+      "conventionalCommits": true,
+      "generatorOptions": {
+        "fallbackCurrentVersionResolver": "disk",
+        "updateDependents": "never"
+      }
+    }
+  },
+  "namedInputs": {
+    "project_source": [
+      "{projectRoot}/src/**",
+      "{projectRoot}/index.ts",
+      "{projectRoot}/index.tsx"
+    ],
+    "project_build_config": [
+      "{projectRoot}/rollup.config.mjs",
+      "{projectRoot}/package.json"
+    ],
+    "project_build": [
+      "project_source",
+      "project_build_config"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "project_build",
+        "^project_build",
+        {
+          "env": "REDUX_DEBUG"
+        }
+      ],
+      "outputs": [
+        "{projectRoot}/lib"
+      ],
+      "cache": true
+    }
+  },
+  "useInferencePlugins": false,
+  "defaultBase": "develop"
+}
